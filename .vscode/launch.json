@@ -1,0 +1,37 @@
+{
+    "configurations": [
+        {
+            "name": "Example 2 - Markdown",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "internalConsole",
+            "program": "${workspaceFolder}/examples/markdown",
+        },
+        {
+            "name": "Go Generate: Example 1 - CSV",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "internalConsole",
+            "program": "${workspaceFolder}/cmd/goproblems",
+            "cwd": "${workspaceFolder}/examples/from-csv",
+            "args": [
+                "-with-struct"
+            ]
+        },
+        {
+            "name": "Go Generate: Example 2 - Markdown",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "console": "internalConsole",
+            "program": "${workspaceFolder}/cmd/goproblems",
+            "cwd": "${workspaceFolder}/examples/markdown",
+            "args": [
+                "-i", "codes/*.md",
+                "-with-struct"
+            ]
+        }
+    ]
+}
