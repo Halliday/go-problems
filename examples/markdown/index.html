@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Markdown Test</title>
+    <meta name="color-scheme" content="dark light" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        input {
+            padding: 8px 16px;
+            margin: 8px auto 16px;
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin: 0 auto;
+        }
+
+        form {
+            width: 320px;
+            margin: 10vh auto 5vh;
+            border: 2px solid lightgray;
+            padding: 72px 48px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>This example requires JavaScript to be enabled in your browser.</noscript>
+
+    <form id="account">
+        <p>Enter the amount you want to withdraw</p>
+        <label for="balance">Balance</label>
+        <input disabled name="balance" id="balance" value="4200">
+        <label for="amount">Amount to withdraw</label>
+        <input type="number" name="amount" id="amount" placeholder="Amount" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        const account = document.getElementById('account');
+        account.addEventListener("submit", (ev) => {
+            ev.preventDefault();
+            withdraw(account.amount.value);
+        });
+
+        async function withdraw(amount) {
+            const req = { method: "POST", body: amount };
+            const resp = await fetch("/api/withdraw", req);
+            if (!resp.ok) {
+                const problem = await resp.json();
+                alert(problem.title + "\n" + problem.detail);
+                console.error(problem.title, problem.detail);
+                return;
+            }
+            alert("OK")
+        }
+    </script>
+</body>
+
+</html>
