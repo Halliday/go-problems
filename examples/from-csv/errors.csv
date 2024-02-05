@@ -1,0 +1,2 @@
+type, status, title
+bad-request, 400, Your request provides invalid parameters.
